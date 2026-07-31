@@ -88,3 +88,4 @@
 
 ## Reality check to hold onto
 This plan gets you to "genuinely competent, hireable junior ML person with a real biology edge" by the time you finish your BSc Hons — that's an excellent outcome and not a fantasy at all. "Working at Anthropic" is possible but is a long-shot stretch goal for nearly everyone in the world, not a realistic near-term milestone — don't let it be the measure of whether this path is working. Measure yourself against: are my projects getting better, do I understand more each month, am I becoming someone a hiring manager would trust with real problems.
+

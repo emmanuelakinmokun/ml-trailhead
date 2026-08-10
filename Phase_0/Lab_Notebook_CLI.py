@@ -40,6 +40,28 @@ def view_samples(samples):
     for row in samples:
         print(row)
 
+def add_sample(filename, samples):
+    sample_id = input("Enter Sample ID: ")
+    date = input("Enter Date (YYYY-MM-DD): ")
+    organism = input("Enter Probable Organism: ")
+    media = input("Enter Nutrient Media: ")
+    source = input("Enter Source: ")
+
+    new_sample = {
+        'ID' : sample_id,
+        'Date' : date,
+        'Probable_organism': organism,
+        'Nutrient_media': media,
+        'Source': source
+    }
+
+    with open(filename, mode = 'a', newline='', encoding='utf-8') as file: 
+        writer = csv.DictWriter(file, fieldnames=Field_names)
+        writer.writerows(new_sample)
+
+    samples.append(new_sample)
+
+
 
     
 

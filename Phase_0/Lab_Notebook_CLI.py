@@ -28,7 +28,6 @@ with open('Micro_Lab_Notebook.csv', mode = 'w', newline='', encoding='utf-8') as
     writer.writerows([Sample_1, Sample_2, Sample_3, Sample_4])
 
 
-
 def load_sample(filename):
     samples = []
     with open(filename, mode = 'r', newline='', encoding='utf-8') as file:
@@ -37,6 +36,12 @@ def load_sample(filename):
             samples.append(row)
     return samples
 
+def view_samples(samples):
+    for row in samples:
+        print(row)
+
+
+    
 
 
 

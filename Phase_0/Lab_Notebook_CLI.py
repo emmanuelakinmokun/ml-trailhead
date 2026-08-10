@@ -76,9 +76,21 @@ def search_sample(samples):
         print("\nSample doesn't exist.")
    
 
+def delete_sample(samples, filename):
+    sample_number = input('Input sample number to be deleted (for example S001 is 1):')
+    try:
+        sample_number = int(sample_number) - 1
+        delete_sample = samples.pop(sample_number)
 
+        with open(filename, mode = 'w', newline='', encoding='utf-8') as file: 
+            writer = csv.DictWriter(file, fieldnames = Field_names)
+            writer.writeheader()
+            writer.writerows(samples)
 
+        print(f"\nSample {delete_sample['ID']} deleted successfully.")
 
-
+    except (ValueError, IndexError):
+        print('\nInvalid selection. Please enter a valid sample number')
+              
 
 

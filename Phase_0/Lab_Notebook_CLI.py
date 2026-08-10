@@ -29,4 +29,12 @@ with open('Micro_Lab_Notebook.csv', mode = 'w', newline='', encoding='utf-8') as
 
 
 
+def load_sample(file):
+    with open('Micro_lab_Notebook.csv', mode = 'r', newline='', encoding='utf-8') as file:
+        reader = csv.reader(file)
+        for row in reader:
+            print(row)
+
+
+
 

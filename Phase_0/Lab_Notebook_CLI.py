@@ -29,11 +29,14 @@ with open('Micro_Lab_Notebook.csv', mode = 'w', newline='', encoding='utf-8') as
 
 
 
-def load_sample(file):
-    with open('Micro_lab_Notebook.csv', mode = 'r', newline='', encoding='utf-8') as file:
-        reader = csv.reader(file)
+def load_sample(filename):
+    samples = []
+    with open(filename, mode = 'r', newline='', encoding='utf-8') as file:
+        reader = csv.DictReader(file)
         for row in reader:
-            print(row)
+            samples.append(row)
+    return samples
+
 
 
 

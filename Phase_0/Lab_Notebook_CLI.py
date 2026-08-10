@@ -62,8 +62,18 @@ def add_sample(filename, samples):
     samples.append(new_sample)
 
 
+def search_sample(samples):
+# Searching by sample name
+    search_input = input('Search for sample name: ')
+    try:
+        search_result = [sample for sample in samples if sample.get('ID') == search_input]
+        print(search_result)
+    except KeyError:
+        print("Sample doesn't exist")
 
-    
+
+
+
 
 
 

@@ -114,6 +114,11 @@ def statistics(samples):
     print(f'Fungi Isolated: {fungi_count}')
 
 
+def confirm_exit():
+    exit_request = input("Are you sure you want to exit? (yes/no): ").strip().lower()
+    return exit_request in ['yes', 'y', 'exit']
+
+
 
     
 

@@ -106,12 +106,18 @@ def statistics(samples):
 
     average_cfu = sum(cfu_counts)/len(cfu_counts)
 
+    org_types = [sample.get('Organism_type', '').title() for sample in samples]
+    bacteria_count = org_types.count('Bacteria')
+    fungi_count = org_types.count('Fungi')
+
 
     print("\n--- Lab Notebook Statistics ---")
     print(f"Total Samples Recorded: {len(samples)}")
     print(f"Average CFU Count: {average_cfu:.2f} CFU/mL")
     print(f"Minimum CFU Count: {min(cfu_counts)}")
     print(f"Maximum CFU Count: {max(cfu_counts)}")
+    print(f'\nBacteria Isolated: {bacteria_count}')
+    print(f'Fungi Isolated: {fungi_count}')
 
 
     

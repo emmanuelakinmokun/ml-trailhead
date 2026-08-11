@@ -15,12 +15,12 @@ field) using only built-in Python (no pandas yet).
 
 import csv
 
-Sample_1 = {'ID': 'S001', 'Date':'2026-08-01', 'Probable_organism':'Escherichia coli', 'Nutrient_media': 'Eosin-Methylene Blue Agar', 'Source': 'Niger River'}
-Sample_2 = {'ID': 'S002', 'Date':'2026-03-23', 'Probable_organism':'Nil', 'Nutrient_media': 'Nutrient Agar', 'Source': 'General Hospital Ward Air Sample'}
-Sample_3 = {'ID': 'S003', 'Date':'2026-11-08', 'Probable_organism':'Proteus vulgaris', 'Nutrient_media': 'MacConkeyAgar', 'Source': 'Asa River'}
-Sample_4 = {'ID': 'S004', 'Date':'2026-04-10', 'Probable_organism':'Nil', 'Nutrient_media': 'Nutrient Agar', 'Source': "MacDonald's waste water"}
+Sample_1 = {'ID': 'S001', 'Date':'2026-08-01','Organism_Type': 'Bacteria', 'Probable_organism':'Escherichia coli', 'Nutrient_media': 'Eosin-Methylene Blue Agar', 'CFU_count': 1500, 'Source': 'Niger River'}
+Sample_2 = {'ID': 'S002', 'Date':'2026-03-23','Organism_Type': 'Fungi', 'Probable_organism':'Nil', 'Nutrient_media': 'Nutrient Agar','CFU_count': 45, 'Source': 'General Hospital Ward Air Sample'}
+Sample_3 = {'ID': 'S003', 'Date':'2026-11-08','Organism_Type': 'Bacteria', 'Probable_organism':'Proteus vulgaris', 'Nutrient_media': 'MacConkeyAgar', 'CFU_count': 176, 'Source': 'Asa River'}
+Sample_4 = {'ID': 'S004', 'Date':'2026-04-10', 'Organism_Type': 'Bacteria','Probable_organism':'Nil', 'Nutrient_media': 'Nutrient Agar', 'CFU_count': 345,  'Source': "MacDonald's waste water"}
 
-Field_names = ['ID', 'Date', 'Probable_organism', 'Nutrient_media', 'Source']
+Field_names = ['ID', 'Date', 'Organism_Type', 'Probable_organism', 'Nutrient_media', 'CFU_count','Source']
 
 with open('Micro_Lab_Notebook.csv', mode = 'w', newline='', encoding='utf-8') as file:
     writer = csv.DictWriter(file, fieldnames=Field_names)
@@ -43,15 +43,19 @@ def view_samples(samples):
 def add_sample(filename, samples):
     sample_id = input("Enter Sample ID: ")
     date = input("Enter Date (YYYY-MM-DD): ")
+    organism_type = input("Enter Microorganism type: ")
     organism = input("Enter Probable Organism: ")
     media = input("Enter Nutrient Media: ")
+    cfu_ml = input('Enter Colony Count: ')
     source = input("Enter Source: ")
 
     new_sample = {
         'ID' : sample_id,
         'Date' : date,
+        'Organism_type' : organism_type,
         'Probable_organism': organism,
         'Nutrient_media': media,
+        'CFU_count':cfu_ml,
         'Source': source
     }
 
@@ -92,5 +96,11 @@ def delete_sample(samples, filename):
     except (ValueError, IndexError):
         print('\nInvalid selection. Please enter a valid sample number')
               
+# Statistics, Exit.. main function....
+
+def statistics(sample):
+
+    
+
 
 

@@ -98,7 +98,21 @@ def delete_sample(samples, filename):
               
 # Statistics, Exit.. main function....
 
-def statistics(sample):
+def statistics(samples):
+    cfu_counts = [int(sample['CFU_count']) for sample in samples if sample['CFU_count'].isdigit()]
+    if not cfu_counts:
+        print("\nNo numeric CFU data available to calculate statistics.")
+        return
+
+    average_cfu = sum(cfu_counts)/len(cfu_counts)
+
+
+    print("\n--- Lab Notebook Statistics ---")
+    print(f"Total Samples Recorded: {len(samples)}")
+    print(f"Average CFU Count: {average_cfu:.2f} CFU/mL")
+    print(f"Minimum CFU Count: {min(cfu_counts)}")
+    print(f"Maximum CFU Count: {max(cfu_counts)}")
+
 
     
 

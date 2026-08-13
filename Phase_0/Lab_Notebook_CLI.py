@@ -8,6 +8,7 @@ view, search, and delete entries in a simple dataset — frame it as a “sample
 
 
 import csv
+import os
 
 Sample_1 = {'ID': 'S001', 'Date':'2026-08-01','Organism_Type': 'Bacteria', 'Probable_organism':'Escherichia coli', 'Nutrient_media': 'Eosin-Methylene Blue Agar', 'CFU_count': 1500, 'Source': 'Niger River'}
 Sample_2 = {'ID': 'S002', 'Date':'2026-03-23','Organism_Type': 'Fungi', 'Probable_organism':'Nil', 'Nutrient_media': 'Nutrient Agar','CFU_count': 45, 'Source': 'General Hospital Ward Air Sample'}
@@ -16,11 +17,14 @@ Sample_4 = {'ID': 'S004', 'Date':'2026-04-10', 'Organism_Type': 'Bacteria','Prob
 
 Field_names = ['ID', 'Date', 'Organism_Type', 'Probable_organism', 'Nutrient_media', 'CFU_count','Source']
 
-with open('Micro_Lab_Notebook.csv', mode = 'w', newline='', encoding='utf-8') as file:
-    writer = csv.DictWriter(file, fieldnames=Field_names)
-    writer.writeheader()
-    writer.writerows([Sample_1, Sample_2, Sample_3, Sample_4])
 
+def initialize(filename):
+    if not os.path.exists(filename):
+        with open('Micro_Lab_Notebook.csv', mode = 'w', newline='', encoding='utf-8') as file:
+            writer = csv.DictWriter(file, fieldnames=Field_names)
+            writer.writeheader()
+            writer.writerows([Sample_1, Sample_2, Sample_3, Sample_4])
+                
 
 def load_sample(filename):
     samples = []
@@ -119,9 +123,38 @@ def confirm_exit():
     return exit_request in ['yes', 'y', 'exit']
 
 
+def main():
+    while True:
+        print("\n" + "=" * 40)
+        print("    MICROBIOLOGY LAB NOTEBOOK CLI    ")
+        print("=" * 40)
+        print("1. View All Samples")
+        print("2. Add New Sample")
+        print("3. Search Sample")
+        print("4. Delete Sample")
+        print("5. View Statistics")
+        print("6. Exit")
+        print("=" * 40)
 
+        choice = input("Select an option (1-6): ").strip()
 
+        if choice == '1':
+            view_samples(samples)
+        elif choice == '2':
+            add_sample(filename, samples)
+        elif choice == '3':
+            search_sample(samples)
+        elif choice == '4':
+            delete_sample(filename, samples)
+        elif choice == '5':
+            statistics(samples)
+        elif choice == '6':
+            confirm_exit()
+        else:
+            print("\nInvalid selection. Please enter a number from 1 to 6.")
 
+if __name__ == '__main__':
+    main()    
     
 
 

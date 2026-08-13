@@ -22,11 +22,11 @@ Field_names = ['ID', 'Date', 'Organism_Type', 'Probable_organism', 'Nutrient_med
 
 def initialize(filename):
     if not os.path.exists(filename):
-        with open(filename, mode = 'w', newline='', encoding='utf-8') as file:
+        with open(filename, mode='w', newline='', encoding='utf-8') as file:
             writer = csv.DictWriter(file, fieldnames=Field_names)
             writer.writeheader()
             writer.writerows([Sample_1, Sample_2, Sample_3, Sample_4])
-                
+
 
 def load_sample(filename):
     samples = []
@@ -141,7 +141,7 @@ def main():
     
     while True:
         print("\n" + "=" * 40)
-        print("MICROBIOLOGY LAB NOTEBOOK CLI")
+        print('MICROBIOLOGY LAB BOOK CLI')
         print("=" * 40)
         print("1. View All Samples")
         print("2. Add New Sample")

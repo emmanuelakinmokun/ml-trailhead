@@ -20,7 +20,7 @@ Field_names = ['ID', 'Date', 'Organism_Type', 'Probable_organism', 'Nutrient_med
 
 def initialize(filename):
     if not os.path.exists(filename):
-        with open('Micro_Lab_Notebook.csv', mode = 'w', newline='', encoding='utf-8') as file:
+        with open(filename, mode = 'w', newline='', encoding='utf-8') as file:
             writer = csv.DictWriter(file, fieldnames=Field_names)
             writer.writeheader()
             writer.writerows([Sample_1, Sample_2, Sample_3, Sample_4])
@@ -35,8 +35,8 @@ def load_sample(filename):
     return samples
 
 def view_samples(samples):
-    for row in samples:
-        print(row)
+    for index, row in enumerate(samples):
+        print(f"[{index}] ID: {row['ID']} | Date: {row['Date']} | Type: {row['Organism_Type']} | Organism: {row['Probable_organism']} | Media: {row['Nutrient_media']} | CFU: {row['CFU_count']} | Source: {row['Source']}")
 
 def add_sample(filename, samples):
     sample_id = input("Enter Sample ID: ")
@@ -149,7 +149,9 @@ def main():
         elif choice == '5':
             statistics(samples)
         elif choice == '6':
-            confirm_exit()
+            if confirm_exit():
+                print("\nExiting Lab Notebook. Goodbye!")
+                break
         else:
             print("\nInvalid selection. Please enter a number from 1 to 6.")
 

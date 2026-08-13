@@ -109,7 +109,7 @@ def delete_sample(samples, filename):
 # Statistics, Exit.. main function....
 
 def statistics(samples):
-    cfu_counts = [int(sample['CFU_count']) for sample in samples if sample['CFU_count'].isdigit()]
+    cfu_counts = [int(sample['CFU_count']) for sample in samples if str(sample['CFU_count']).isdigit()]
     if not cfu_counts:
         print("\nNo numeric CFU data available to calculate statistics.")
         return
@@ -136,6 +136,9 @@ def confirm_exit():
 
 
 def main():
+    initialize(filename)
+    samples = load_sample(filename)
+    
     while True:
         print("\n" + "=" * 40)
         print("    MICROBIOLOGY LAB NOTEBOOK CLI    ")

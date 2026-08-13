@@ -92,6 +92,8 @@ def delete_sample(samples, filename):
     sample_number = input('Input sample number to be deleted (for example S001 is 1):')
     try:
         sample_number = int(sample_number) - 1
+        if sample_number < 0 or sample_number > len(samples):
+            raise IndexError
         delete_sample = samples.pop(sample_number)
 
         with open(filename, mode = 'w', newline='', encoding='utf-8') as file: 

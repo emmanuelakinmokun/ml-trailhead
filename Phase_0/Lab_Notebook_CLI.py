@@ -10,6 +10,8 @@ view, search, and delete entries in a simple dataset — frame it as a “sample
 import csv
 import os
 
+filename = 'Micro_lab_sample_record.csv'
+
 Sample_1 = {'ID': 'S001', 'Date':'2026-08-01','Organism_Type': 'Bacteria', 'Probable_organism':'Escherichia coli', 'Nutrient_media': 'Eosin-Methylene Blue Agar', 'CFU_count': 1500, 'Source': 'Niger River'}
 Sample_2 = {'ID': 'S002', 'Date':'2026-03-23','Organism_Type': 'Fungi', 'Probable_organism':'Nil', 'Nutrient_media': 'Nutrient Agar','CFU_count': 45, 'Source': 'General Hospital Ward Air Sample'}
 Sample_3 = {'ID': 'S003', 'Date':'2026-11-08','Organism_Type': 'Bacteria', 'Probable_organism':'Proteus vulgaris', 'Nutrient_media': 'MacConkeyAgar', 'CFU_count': 176, 'Source': 'Asa River'}
@@ -35,6 +37,9 @@ def load_sample(filename):
     return samples
 
 def view_samples(samples):
+    if not samples:
+        print('\nNo samples recorded')
+        return
     for index, row in enumerate(samples):
         print(f"[{index}] ID: {row['ID']} | Date: {row['Date']} | Type: {row['Organism_Type']} | Organism: {row['Probable_organism']} | Media: {row['Nutrient_media']} | CFU: {row['CFU_count']} | Source: {row['Source']}")
 

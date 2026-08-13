@@ -40,7 +40,7 @@ def view_samples(samples):
     if not samples:
         print('\nNo samples recorded')
         return
-    for index, row in enumerate(samples):
+    for index, row in enumerate(samples, start=1):
         print(f"[{index}] ID: {row['ID']} | Date: {row['Date']} | Type: {row['Organism_Type']} | Organism: {row['Probable_organism']} | Media: {row['Nutrient_media']} | CFU: {row['CFU_count']} | Source: {row['Source']}")
 
 def add_sample(filename, samples):
@@ -92,7 +92,7 @@ def delete_sample(samples, filename):
     sample_number = input('Input sample number to be deleted (for example S001 is 1):')
     try:
         sample_number = int(sample_number) - 1
-        if sample_number < 0 or sample_number > len(samples):
+        if sample_number < 0 or sample_number >= len(samples):
             raise IndexError
         delete_sample = samples.pop(sample_number)
 
@@ -141,7 +141,7 @@ def main():
     
     while True:
         print("\n" + "=" * 40)
-        print("    MICROBIOLOGY LAB NOTEBOOK CLI    ")
+        print("MICROBIOLOGY LAB NOTEBOOK CLI")
         print("=" * 40)
         print("1. View All Samples")
         print("2. Add New Sample")

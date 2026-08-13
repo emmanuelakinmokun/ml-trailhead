@@ -46,7 +46,7 @@ def add_sample(filename, samples):
     new_sample = {
         'ID' : sample_id,
         'Date' : date,
-        'Organism_type' : organism_type,
+        'Organism_Type' : organism_type,
         'Probable_organism': organism,
         'Nutrient_media': media,
         'CFU_count':cfu_ml,
@@ -55,7 +55,7 @@ def add_sample(filename, samples):
 
     with open(filename, mode = 'a', newline='', encoding='utf-8') as file: 
         writer = csv.DictWriter(file, fieldnames=Field_names)
-        writer.writerows(new_sample)
+        writer.writerow(new_sample)
 
     samples.append(new_sample)
 
@@ -100,7 +100,7 @@ def statistics(samples):
 
     average_cfu = sum(cfu_counts)/len(cfu_counts)
 
-    org_types = [sample.get('Organism_type', '').title() for sample in samples]
+    org_types = [sample.get('Organism_Type', '').title() for sample in samples]
     bacteria_count = org_types.count('Bacteria')
     fungi_count = org_types.count('Fungi')
 
@@ -117,6 +117,8 @@ def statistics(samples):
 def confirm_exit():
     exit_request = input("Are you sure you want to exit? (yes/no): ").strip().lower()
     return exit_request in ['yes', 'y', 'exit']
+
+
 
 
 

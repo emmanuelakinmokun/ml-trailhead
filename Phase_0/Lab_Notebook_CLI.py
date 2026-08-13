@@ -44,13 +44,15 @@ def view_samples(samples):
         print(f"[{index}] ID: {row['ID']} | Date: {row['Date']} | Type: {row['Organism_Type']} | Organism: {row['Probable_organism']} | Media: {row['Nutrient_media']} | CFU: {row['CFU_count']} | Source: {row['Source']}")
 
 def add_sample(filename, samples):
-    sample_id = input("Enter Sample ID: ")
-    date = input("Enter Date (YYYY-MM-DD): ")
-    organism_type = input("Enter Microorganism type: ")
-    organism = input("Enter Probable Organism: ")
-    media = input("Enter Nutrient Media: ")
-    cfu_ml = input('Enter Colony Count: ')
-    source = input("Enter Source: ")
+    sample_id = input("Enter Sample ID: ").strip()
+    date = input("Enter Date (YYYY-MM-DD): ").strip()
+    organism_type = input("Enter Microorganism type: ").strip()
+    organism = input("Enter Probable Organism: ").strip()
+    media = input("Enter Nutrient Media: ").strip()
+    cfu_ml = input('Enter Colony Count: ').strip()
+    source = input("Enter Source: ").strip()
+
+    
 
     new_sample = {
         'ID' : sample_id,

@@ -50,9 +50,11 @@ def add_sample(filename, samples):
     organism = input("Enter Probable Organism: ").strip()
     media = input("Enter Nutrient Media: ").strip()
     cfu_ml = input('Enter Colony Count: ').strip()
+    while not cfu_ml.isdigit():
+        print("Invalid input. Colony Count must be a positive integer.")
+        cfu_ml = input("Enter Colony Count: ").strip()
     source = input("Enter Source: ").strip()
 
-    
 
     new_sample = {
         'ID' : sample_id,
@@ -69,6 +71,7 @@ def add_sample(filename, samples):
         writer.writerow(new_sample)
 
     samples.append(new_sample)
+    print("\nSample added successfully.")
 
 
 def search_sample(samples):

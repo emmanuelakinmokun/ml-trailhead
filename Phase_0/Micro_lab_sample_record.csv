@@ -1,0 +1,5 @@
+ID,Date,Organism_Type,Probable_organism,Nutrient_media,CFU_count,Source
+S001,2026-08-01,Bacteria,Escherichia coli,Eosin-Methylene Blue Agar,1500,Niger River
+S002,2026-03-23,Fungi,Nil,Nutrient Agar,45,General Hospital Ward Air Sample
+S003,2026-11-08,Bacteria,Proteus vulgaris,MacConkeyAgar,176,Asa River
+S004,2026-04-10,Bacteria,Nil,Nutrient Agar,345,MacDonald's waste water

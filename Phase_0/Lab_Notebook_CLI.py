@@ -106,7 +106,6 @@ def delete_sample(samples, filename):
     except (ValueError, IndexError):
         print('\nInvalid selection. Please enter a valid sample number')
               
-# Statistics, Exit.. main function....
 
 def statistics(samples):
     cfu_counts = [int(sample['CFU_count']) for sample in samples if str(sample['CFU_count']).isdigit()]

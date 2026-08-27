@@ -44,7 +44,7 @@ WHERE s.ID IN (
     WHERE CFU_count > 100
 );
 
--- Window Function : Rank CFU counts within each Organism Type group
+-- Window Function : Ranking CFU counts within each Organism Type group
 SELECT 
     r.Organism_Type,
     s.ID,
@@ -55,5 +55,15 @@ SELECT
         PARTITION BY r.Organism_Type 
         ORDER BY r.CFU_count DESC
     ) AS CFU_Rank
+FROM Results r
+JOIN Samples s ON r.ID = s.ID;
+
+-- Window Function : Comparing each sample's CFU count to the average of its Nutrient Media
+SELECT 
+    s.ID,
+    r.Nutrient_media,
+    r.CFU_count,
+    ROUND(AVG(r.CFU_count) OVER (PARTITION BY r.Nutrient_media), 2) AS Media_Avg_CFU,
+    ROUND(r.CFU_count - AVG(r.CFU_count) OVER (PARTITION BY r.Nutrient_media), 2) AS Deviation_From_Avg
 FROM Results r
 JOIN Samples s ON r.ID = s.ID;

@@ -43,3 +43,17 @@ WHERE s.ID IN (
     FROM Results 
     WHERE CFU_count > 100
 );
+
+-- Window Function : Rank CFU counts within each Organism Type group
+SELECT 
+    r.Organism_Type,
+    s.ID,
+    s.Source,
+    r.Probable_organism,
+    r.CFU_count,
+    DENSE_RANK() OVER (
+        PARTITION BY r.Organism_Type 
+        ORDER BY r.CFU_count DESC
+    ) AS CFU_Rank
+FROM Results r
+JOIN Samples s ON r.ID = s.ID;

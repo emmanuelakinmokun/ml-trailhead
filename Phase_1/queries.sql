@@ -20,7 +20,7 @@ FROM Samples s
 GROUP BY s.Source
 ORDER BY Sample_Count DESC;
 
--- SUBQUERY 
+-- SUBQUERY > average cfu_count
 SELECT 
     s.ID, 
     s.Source, 
@@ -33,3 +33,13 @@ WHERE r.CFU_count > (
     FROM Results
 ) 
 ORDER BY r.CFU_count DESC;
+
+-- SUBQUERY -- Sources with cfu_count > 100
+SELECT DISTINCT 
+    s.Source
+FROM Samples s
+WHERE s.ID IN (
+    SELECT ID 
+    FROM Results 
+    WHERE CFU_count > 100
+);

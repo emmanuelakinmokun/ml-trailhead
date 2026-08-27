@@ -19,3 +19,17 @@ SELECT
 FROM Samples s
 GROUP BY s.Source
 ORDER BY Sample_Count DESC;
+
+-- SUBQUERY 
+SELECT 
+    s.ID, 
+    s.Source, 
+    r.Probable_organism, 
+    r.CFU_count
+FROM Samples s
+JOIN Results r ON s.ID = r.ID
+WHERE r.CFU_count > (
+    SELECT AVG(CFU_count)
+    FROM Results
+) 
+ORDER BY r.CFU_count DESC;

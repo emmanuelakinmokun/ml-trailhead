@@ -27,4 +27,7 @@ with sqlite3.connect('my_database.db') as conn:
     results_df.to_sql('Results', conn, if_exists='replace', index=False)
     print("Created 'samples' and 'lab_results' tables")
 
+    with open('queries.sql', 'r') as file:
+        raw_sql = file.read()
+    
 

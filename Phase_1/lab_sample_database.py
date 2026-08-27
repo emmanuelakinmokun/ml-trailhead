@@ -19,7 +19,12 @@ df = pd.read_csv(r"C:\Users\emman\OneDrive\Documents\GitHub\Machine Learning\Pha
 
 conn = sqlite3.connect('my_database.db')
 
-df.to_sql('my_table', conn, if_exists='replace', index=False)
+samples_df = df[['ID', 'Date', 'Source']]
+results_df = df[['ID','Organism_Type', 'Probable_organism', 'Nutrient_media', 'CFU_count']]
 
-conn.close()
+with sqlite3.connect('my_database.db') as conn:
+    samples_df.to_sql('Samples', conn, if_exists='replace', index=False)
+    results_df.to_sql('Results', conn, if_exists='replace', index=False)
+    print("Created 'samples' and 'lab_results' tables")
+
 

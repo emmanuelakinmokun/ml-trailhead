@@ -30,4 +30,7 @@ with sqlite3.connect('my_database.db') as conn:
     with open('queries.sql', 'r') as file:
         raw_sql = file.read()
     
+    queries = [q.strip() for q in raw_sql.split(";") if q.strip()]
+
+
 
